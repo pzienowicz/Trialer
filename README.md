@@ -11,6 +11,7 @@ A small and simple library for managing trial period in your android app.
 Installation
 ------------
 
+### Gradle
 Add this to your root build.gradle file under repositories:
 ```
 allprojects {
@@ -23,6 +24,9 @@ Add this to your app level build.gradle as dependency:
 
     com.github.pzienowicz:Trialer:1.0.0
 
+### Maven
+```
+```
 
 ## Usage
 
@@ -40,7 +44,7 @@ Trialer().apply {
 ```
 
 
-### Android
+### Java
 ```java
 
 ```
