@@ -6,6 +6,8 @@
 [![Build Status](https://travis-ci.org/pzienowicz/Trialer.svg?branch=master)](https://travis-ci.org/pzienowicz/Trialer)  
 
 
+## This repo is under development! Leave a star and give me few days to get it working.
+
 A small and simple library for managing trial period in your android app.
 
 Installation
