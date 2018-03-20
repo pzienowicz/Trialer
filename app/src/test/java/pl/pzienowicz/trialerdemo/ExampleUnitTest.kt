@@ -1,4 +1,4 @@
-package pl.pzienowicz.trialer
+package pl.pzienowicz.trialerdemo
 
 import org.junit.Test
 

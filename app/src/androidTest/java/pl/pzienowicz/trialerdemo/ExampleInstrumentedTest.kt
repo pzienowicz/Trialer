@@ -1,4 +1,4 @@
-package pl.pzienowicz.trialer
+package pl.pzienowicz.trialerdemo
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
