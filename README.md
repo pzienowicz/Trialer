@@ -22,7 +22,8 @@ allprojects {
 ```
 Add this to your app level build.gradle as dependency:
 
-    implementation 'com.github.pzienowicz:Trialer:1.0.0'
+    implementation 'com.github.pzienowicz:Trialer:{latest.version}'
+Latest version: ![](https://jitpack.io/v/pzienowicz/Trialer.svg)
 
 ## Usage
 
