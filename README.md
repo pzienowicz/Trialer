@@ -22,7 +22,7 @@ allprojects {
 ```
 Add this to your app level build.gradle as dependency:
 
-    com.github.pzienowicz:Trialer:1.0.0
+    implementation 'com.github.pzienowicz:Trialer:1.0.0'
 
 ## Usage
 
