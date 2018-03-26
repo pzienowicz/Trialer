@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Toast
 import pl.pzienowicz.trialer.Trialer
 import pl.pzienowicz.trialer.listener.TrialEndedListener
-import pl.pzienowicz.trialer.validator.BuildDateValidator
 import pl.pzienowicz.trialer.validator.InstallDateValidator
 import pl.pzienowicz.trialer.validator.StaticDateValidator
 import pl.pzienowicz.trialer.validator.ValidatorInterface
@@ -28,7 +27,6 @@ class MainActivity : Activity() {
 
         }
         trialer.addValidator(InstallDateValidator(10))
-        trialer.addValidator(BuildDateValidator(30))
         trialer.addValidator(StaticDateValidator(someFutureDate.time))
         trialer.valid()
     }
