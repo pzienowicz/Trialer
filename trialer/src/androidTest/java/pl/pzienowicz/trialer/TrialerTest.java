@@ -24,6 +24,6 @@ public class TrialerTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("pl.pzienowicz.trialer.test", appContext.getPackageName());
+        assertEquals("pl.pzienowicz.trialer", appContext.getPackageName());
     }
 }
