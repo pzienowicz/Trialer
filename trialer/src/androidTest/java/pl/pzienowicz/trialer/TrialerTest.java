@@ -19,11 +19,11 @@ import org.mockito.Mock;
 @RunWith(AndroidJUnit4.class)
 public class TrialerTest {
 
-//    @Test
-//    public void useAppContext() throws Exception {
-//        // Context of the app under test.
-//        Context appContext = InstrumentationRegistry.getTargetContext();
-//
-//        assertEquals("pl.pzienowicz.trialer.test", appContext.getPackageName());
-//    }
+    @Test
+    public void useAppContext() throws Exception {
+        // Context of the app under test.
+        Context appContext = InstrumentationRegistry.getTargetContext();
+
+        assertEquals("pl.pzienowicz.trialer", appContext.getPackageName());
+    }
 }
