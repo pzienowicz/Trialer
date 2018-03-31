@@ -36,8 +36,8 @@ trialer.trialEndedListener = object : TrialEndedListener {
         }
 }
 trialer.addValidator(InstallDateValidator(10))
-trialer.addValidator(BuildDateValidator(30))
 trialer.addValidator(StaticDateValidator(someFutureDate))
+trialer.addValidator(YourCustomValidator())
 trialer.valid()
 ```
 
@@ -52,8 +52,8 @@ trialer.setTrialEndedListener(new TrialEndedListener() {
 	}
 });
 trialer.addValidator(new InstallDateValidator(10));
-trialer.addValidator(new BuildDateValidator(10));
 trialer.addValidator(new StaticDateValidator(someFutureDate.getTime()));
+trialer.addValidator(new YourCustomValidator());
 trialer.valid();
 ```
 
