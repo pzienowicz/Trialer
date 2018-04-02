@@ -38,6 +38,7 @@ trialer.trialEndedListener = object : TrialEndedListener {
 trialer.addValidator(InstallDateValidator(10))
 trialer.addValidator(StaticDateValidator(someFutureDate))
 trialer.addValidator(YourCustomValidator())
+trialer.addAction(DisplayToastAction(context, "Toast by DisplayToastAction"))
 trialer.valid()
 ```
 
@@ -54,6 +55,7 @@ trialer.setTrialEndedListener(new TrialEndedListener() {
 trialer.addValidator(new InstallDateValidator(10));
 trialer.addValidator(new StaticDateValidator(someFutureDate.getTime()));
 trialer.addValidator(new YourCustomValidator());
+trialer.addAction(new DisplayToastAction(context, "Toast by DisplayToastAction"))
 trialer.valid();
 ```
 
@@ -83,3 +85,22 @@ You are able to create your custom validators. Just implement *ValidatorInterfac
 
 ### More validators soon
 Feel free to contribute and add your custom validators.
+
+
+## Actions
+
+If you don't want to use TrialEndedListener, you can just use simple action, which will be run if trial ended.
+For now we have few actions specified below. If these actions don't meet your needs, please implement ActionInterface and create your own action.
+
+### FinishActivityAction
+Closes activity if trial ended.
+```java
+trialer.addAction(FinishActivityAction(activity))
+```
+
+### DisplayToastAction
+Displays toast message if trial ended.
+```java
+
+trialer.addAction(DisplayToastAction(context, "Toast by DisplayToastAction"))
+```
