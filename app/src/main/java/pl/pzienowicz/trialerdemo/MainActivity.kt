@@ -4,6 +4,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.widget.Toast
 import pl.pzienowicz.trialer.Trialer
+import pl.pzienowicz.trialer.action.DisplayToastAction
 import pl.pzienowicz.trialer.listener.TrialEndedListener
 import pl.pzienowicz.trialer.validator.InstallDateValidator
 import pl.pzienowicz.trialer.validator.StaticDateValidator
@@ -28,6 +29,7 @@ class MainActivity : Activity() {
         }
         trialer.addValidator(InstallDateValidator(10))
         trialer.addValidator(StaticDateValidator(someFutureDate.time))
+        trialer.addAction(DisplayToastAction(this, "Toast by DisplayToastAction"))
         trialer.valid()
     }
 }

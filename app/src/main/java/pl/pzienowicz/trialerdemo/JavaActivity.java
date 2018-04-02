@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Calendar;
 
 import pl.pzienowicz.trialer.Trialer;
+import pl.pzienowicz.trialer.action.DisplayToastAction;
 import pl.pzienowicz.trialer.listener.TrialEndedListener;
 import pl.pzienowicz.trialer.validator.InstallDateValidator;
 import pl.pzienowicz.trialer.validator.StaticDateValidator;
@@ -34,6 +35,7 @@ public class JavaActivity extends Activity {
         });
         trialer.addValidator(new InstallDateValidator(10));
         trialer.addValidator(new StaticDateValidator(someFutureDate.getTime()));
+        trialer.addAction(new DisplayToastAction(this, "Toast by DisplayToastAction"));
         trialer.valid();
     }
 }
