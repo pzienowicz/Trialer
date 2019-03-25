@@ -10,6 +10,9 @@ env:
     - ANDROID_ABI=armeabi-v7a
     - ANDROID_TAG=google_apis
 
+before_install:
+  - yes | sdkmanager "platforms;android-28"
+
 android:
   components:
     - tools
