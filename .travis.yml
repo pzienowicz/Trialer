@@ -26,6 +26,10 @@ android:
     - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
     - sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API_LEVEL
     - sys-img-armeabi-v7a-android-$EMULATOR_API_LEVEL # the fix!
+  licenses:
+    - android-sdk-preview-license-.+
+    - android-sdk-license-.+
+    - google-gdk-license-.+
 
 before_script:
   - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
