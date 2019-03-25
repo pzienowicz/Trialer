@@ -13,6 +13,7 @@ import pl.pzienowicz.trialer.Trialer;
 import pl.pzienowicz.trialer.action.DisplayToastAction;
 import pl.pzienowicz.trialer.listener.TrialEndedListener;
 import pl.pzienowicz.trialer.validator.InstallDateValidator;
+import pl.pzienowicz.trialer.validator.RunTimesValidator;
 import pl.pzienowicz.trialer.validator.StaticDateValidator;
 import pl.pzienowicz.trialer.validator.ValidatorInterface;
 
@@ -35,6 +36,7 @@ public class JavaActivity extends Activity {
         });
         trialer.addValidator(new InstallDateValidator(10));
         trialer.addValidator(new StaticDateValidator(someFutureDate.getTime()));
+        trialer.addValidator(new RunTimesValidator(5));
         trialer.addAction(new DisplayToastAction(this, "Toast by DisplayToastAction"));
         trialer.valid();
     }

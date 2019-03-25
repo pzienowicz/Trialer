@@ -1,6 +1,7 @@
 package pl.pzienowicz.trialer;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.support.test.runner.AndroidJUnit4;
@@ -23,6 +24,7 @@ import pl.pzienowicz.trialer.action.DisplayToastAction;
 import pl.pzienowicz.trialer.action.FinishActivityAction;
 import pl.pzienowicz.trialer.listener.TrialEndedListener;
 import pl.pzienowicz.trialer.validator.InstallDateValidator;
+import pl.pzienowicz.trialer.validator.RunTimesValidator;
 import pl.pzienowicz.trialer.validator.StaticDateValidator;
 import pl.pzienowicz.trialer.validator.ValidatorInterface;
 
@@ -49,6 +51,10 @@ public class TrialerTest {
     @Mock
     private
     PackageInfo packageInfo = mock(PackageInfo.class);
+
+    @Mock
+    private
+    SharedPreferences sharedPreferences = mock(SharedPreferences.class);
 
     @Mock
     private
@@ -140,6 +146,37 @@ public class TrialerTest {
 
         verify(trialEndedListener, never()).onTrialEnded(any(InstallDateValidator.class));
     }
+
+    @Test
+    public void validWithRunTimesValidator_TrialEnded() {
+        when(sharedPreferences.getInt(RunTimesValidator.PREFS_NAME, 0)).thenReturn(4);
+        when(mMockContext.getSharedPreferences(RunTimesValidator.PREFS_FILENAME, 0)).thenReturn(sharedPreferences);
+
+        Trialer trialer = new Trialer(mMockContext);
+        trialer.setTrialEndedListener(trialEndedListener);
+        trialer.addValidator(new RunTimesValidator(4));
+        trialer.valid();
+
+        verify(trialEndedListener, times(1)).onTrialEnded(any(RunTimesValidator.class));
+    }
+
+    @Test
+    public void validWithRunTimesValidator_TrialNotEnded() {
+        SharedPreferences.Editor editor = mock(SharedPreferences.Editor.class);
+
+        when(editor.putInt(any(String.class), any(Integer.class))).thenReturn(editor);
+        when(sharedPreferences.getInt(RunTimesValidator.PREFS_NAME, 0)).thenReturn(2);
+        when(sharedPreferences.edit()).thenReturn(editor);
+        when(mMockContext.getSharedPreferences(RunTimesValidator.PREFS_FILENAME, 0)).thenReturn(sharedPreferences);
+
+        Trialer trialer = new Trialer(mMockContext);
+        trialer.setTrialEndedListener(trialEndedListener);
+        trialer.addValidator(new RunTimesValidator(10));
+        trialer.valid();
+
+        verify(trialEndedListener, never()).onTrialEnded(any(RunTimesValidator.class));
+    }
+
 
     @Test
     public void validWithStaticDateValidator_TrialEnded_ActionsStarted() {

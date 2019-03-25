@@ -38,6 +38,7 @@ trialer.trialEndedListener = object : TrialEndedListener {
 }
 trialer.addValidator(InstallDateValidator(10))
 trialer.addValidator(StaticDateValidator(someFutureDate))
+trialer.addValidator(RunTimesValidator(5))
 trialer.addValidator(YourCustomValidator())
 trialer.addAction(DisplayToastAction(context, "Toast by DisplayToastAction"))
 trialer.valid()
@@ -55,6 +56,7 @@ trialer.setTrialEndedListener(new TrialEndedListener() {
 });
 trialer.addValidator(new InstallDateValidator(10));
 trialer.addValidator(new StaticDateValidator(someFutureDate.getTime()));
+trialer.addValidator(new RunTimesValidator(5));
 trialer.addValidator(new YourCustomValidator());
 trialer.addAction(new DisplayToastAction(context, "Toast by DisplayToastAction"))
 trialer.valid();
@@ -78,6 +80,15 @@ It fails when X days have passed since installation.
 val days = 10 //Int
 ...
 trialer.addValidator(InstallDateValidator(days))
+...
+```
+
+### RunTimesValidator
+It fails when X times your activity has been launched.
+```java
+val runTimes = 5 //Int
+...
+trialer.addValidator(RunTimesValidator(runTimes))
 ...
 ```
 
