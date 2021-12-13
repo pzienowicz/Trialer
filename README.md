@@ -35,8 +35,12 @@ Latest version: ![](https://jitpack.io/v/pzienowicz/Trialer.svg)
 val trialer = Trialer(this)
 trialer.trialEndedListener = object : TrialEndedListener {
 	override fun onTrialEnded(validatorClass: ValidatorInterface) {
-                Toast.makeText(applicationContext, "Trial ended by: " + validatorClass::class.java.simpleName  , Toast.LENGTH_LONG).show()
-        }
+        Toast.makeText(
+            applicationContext, 
+            "Trial ended by: " + validatorClass::class.java.simpleName, 
+            Toast.LENGTH_LONG
+        ).show()
+    }
 }
 trialer.addValidator(InstallDateValidator(10))
 trialer.addValidator(StaticDateValidator(someFutureDate))
@@ -50,12 +54,13 @@ trialer.valid()
 ### Java
 ```java
 Trialer trialer = new Trialer(this);
-trialer.setTrialEndedListener(new TrialEndedListener() {
-        @Override
-        public void onTrialEnded(@NotNull ValidatorInterface validatorClass) {
-                Toast.makeText(getApplicationContext(), "Trial ended by: " + validatorClass.getClass().getSimpleName()  , Toast.LENGTH_LONG).show()
-	}
-});
+trialer.setTrialEndedListener(validatorClass ->
+    Toast.makeText(
+        getApplicationContext(),
+        "Trial ended by: " + validatorClass.getClass().getSimpleName(),
+        Toast.LENGTH_LONG
+    ).show()
+);
 trialer.addValidator(new InstallDateValidator(10));
 trialer.addValidator(new StaticDateValidator(someFutureDate.getTime()));
 trialer.addValidator(new RunTimesValidator(5));

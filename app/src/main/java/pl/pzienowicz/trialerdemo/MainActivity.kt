@@ -24,9 +24,12 @@ class MainActivity : Activity() {
         val trialer = Trialer(this)
         trialer.trialEndedListener = object : TrialEndedListener {
             override fun onTrialEnded(validatorClass: ValidatorInterface) {
-                Toast.makeText(applicationContext, "Trial ended by: " + validatorClass::class.java.simpleName  , Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    applicationContext,
+                    "Trial ended by: " + validatorClass::class.java.simpleName,
+                    Toast.LENGTH_LONG
+                ).show()
             }
-
         }
         trialer.addValidator(InstallDateValidator(10))
         trialer.addValidator(StaticDateValidator(someFutureDate.time))
